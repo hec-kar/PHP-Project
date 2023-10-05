@@ -25,6 +25,7 @@ function doanhThuMinFunc($arr)
     return $doanhThuMin;
 }
 
+//Tim doanh thu max
 function doanhThuMaxFunc($arr)
 {
     $doanhThuMax = $arr[0];
@@ -36,7 +37,7 @@ function doanhThuMaxFunc($arr)
     return $doanhThuMax;
 }
 
-
+//Lay ra doanh thu thap nhat trong nam
 function getDoanhThuThapNhat($arr)
 {
     $arrLength = count($arr);
@@ -55,7 +56,7 @@ function getDoanhThuThapNhat($arr)
 
 getDoanhThuThapNhat($DoanhThuArr);
 
-
+//Lay ra doanh thu cao nhat trong nam
 function getDoanhThuCaoNhat($arr)
 {
     $arrLength = count($arr);
@@ -71,9 +72,10 @@ function getDoanhThuCaoNhat($arr)
     echo "\nTai thang: ";
     displayArray($result);
 }
-
 getDoanhThuCaoNhat($DoanhThuArr);
 
+
+//Lay doanh thu trung binh;
 function getDoanhThuTrungBinh($arr)
 {
     $arrLength = count($arr);
@@ -94,7 +96,7 @@ $AssociativeArr = array(
     "Nov" => 13000000, "Dec" => 10000000
 );
 
-
+//Cac thang doanh thu thap nhat theo array keyvalue
 function tenThangDoanhThuThapNhat($arr)
 {
     $doanhThuMin = min($arr);
@@ -108,10 +110,10 @@ function tenThangDoanhThuThapNhat($arr)
     echo "\nCac thang co doanh thu thap nhat: ";
     displayArray($result);
 }
-
-
 tenThangDoanhThuThapNhat($AssociativeArr);
 
+
+//Cac thang Doanh thu cao nhat theo array keyvalue
 function tenThangDoanhThuCaoNhat($arr)
 {
     $doanhThuMax = max($arr);
@@ -126,5 +128,4 @@ function tenThangDoanhThuCaoNhat($arr)
     echo "\nCac thang co doanh thu Cao nhat: ";
     displayArray($result);
 }
-
 tenThangDoanhThuCaoNhat($AssociativeArr);
