@@ -34,7 +34,29 @@ function checkPassword($password)
     return false;
 }
 
+function hashPassword($password)
+{
+    $result = [];
 
+    $beginAscii = ord("A"); //Z
+    $endAscii = ord("z");
+    // echo $endAscii;
+    for ($i = 0; $i < strlen($password); $i++) {
+        if (ord($password[$i]) <= $endAscii && ord($password[$i]) >= $beginAscii) {
+            if (ord($password[$i]) == $endAscii) {
+                $password[$i] = chr($beginAscii + 3);
+            } else {
+                $password[$i] = chr(ord($password[$i]) + 3);
+            }
+        }
+        // echo ($password[$i]);
+        // echo chr(ord($password[$i]) + 3);
+    }
+
+    return $password;
+}
+
+echo hashPassword("abcz");
 
 function handleLogin()
 {
@@ -47,4 +69,4 @@ function handleLogin()
         echo  "Check usernaem :: " . checkUsername($username) . "<br>" . "check pass: " . checkPassword($password);
     }
 }
-handleLogin();
+// handleLogin();
