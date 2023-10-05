@@ -1,4 +1,8 @@
 <?php
+include "./layout.php";
+define("PAGE_TITLE", "form");
+template_header();
+
 
 $DoanhThuInfos = array(
     "Jan" => 10000000, "Feb" => 12000000, "Mar" => 15000000, "Apr" => 11000000, "May" => 16000000,
@@ -44,14 +48,8 @@ function handleThongKe($ThongKeMode, $arr)
 }
 
 
+echo handleThongKe($_POST['thongKe'], $DoanhThuInfos);
 
-function handleForm($arr)
-{
-    $MonthValue = $_GET['Months'] ?? null;
-    $ThongKeMode = $_GET['thongKe'] ?? null;
 
-    getDoanhThu($MonthValue, $arr);
-    echo handleThongKe($ThongKeMode, $arr);
-}
 
-handleForm($DoanhThuInfos);
+template_footer();
