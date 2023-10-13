@@ -1,0 +1,6 @@
+USERID,USERNAME,FIRSTNAME,LASTNAME,PASSWORDINPUT,PASSWORDCHECK,PRIMARYEMAIL
+1,ssmith123,SUSAN,SMITH,ssmithpwd,ssmithpwd,ssmith@example.com
+2,phongdeptrai,Phong,Deptrai,123,123,ssmith@example.com
+3,phongpro5141,phong,pro,123,123,ssmith@example.com
+4,jackphongcorn,jack,5cu,123,123,ssmith@example.com
+5,heckar,heckar,corn,123,123,ssmith@example.com
