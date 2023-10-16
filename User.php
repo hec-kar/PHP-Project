@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 
+ */
 class User
 {
     public $userId;
@@ -80,7 +82,7 @@ class User
         return $this->primaryEmail;
     }
 
-    function FunctionName(): string
+    function fullName(): string
     {
         return $this->firstName . " " . $this->lastName;
     }

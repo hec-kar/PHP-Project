@@ -1,46 +1,72 @@
 <?php
 include "./User.php";
 
-
-
-
-function loadUsers(): array
+/**
+ * 
+ * return listUser
+ */
+function loadUser()
 {
-    $userList = [];
-    $row = 1;
-    if (($handle = fopen("./files/users.csv", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-            array_push($userList, $data);
-            $row++;
-        }
-        fclose($handle);
+    $listUser = [];
+    $file = fopen('./files/users.csv', 'r');
+
+    // Bỏ qua hàng đầu tiên (chứa tên trường dữ liệu)
+    fgetcsv($file);
+    while (($data = fgetcsv($file)) !== false) {
+        $userId = $data[0];
+        $username = $data[1];
+        $firstName = $data[2];
+        $lastName = $data[3];
+        $passInput = $data[4];
+        $passCheck = $data[5];
+        $primaryEmail = $data[6];
+        array_push($listUser, new User(
+            $userId,
+            $username,
+            $firstName,
+            $lastName,
+            $passInput,
+            $passCheck,
+            $primaryEmail
+        ));
     }
-    return $userList;
+    fclose($file);
+    return $listUser;
 }
-// print_r($userArrayList);
 ?>
 
-
-<?php function displayUsers($userArrayList)
+<?php
+function displayUsers()
 { ?>
+    <?php $listUser = loadUser(); ?>
     <table>
-        <?php foreach ($userArrayList as $userArray) : ?>
+        <tr>
+            <th>USERNAME </th>
+            <th>FULLNAME </th>
+        </tr>
+        <?php foreach ($listUser as $user) { ?>
             <tr>
-                <td><?= $userArray[0] ?></td>
-                <td><?= $userArray[1] ?></td>
+                <td> <?= $user->username ?> </td>
+                <td> <?= $user->fullName() ?> </td>
             </tr>
-        <?php endforeach; ?>
+        <?php } ?>
     </table>
 <?php } ?>
 
+
 <?php function displayUsersWithLink()
 { ?>
+    <?php $listUser = loadUser(); ?>
     <table>
-        <?php foreach ($userArrayList as $userArray) : ?>
+        <tr>
+            <th>USERNAME </th>
+            <th>FULLNAME </th>
+        </tr>
+        <?php foreach ($listUser as $user) { ?>
             <tr>
-                <td><?= $userArray[0] ?></td>
-                <td><?= $userArray[1] ?></td>
+                <td> <a href="userinfo.php?id=<?= $user->userId ?>"><?= $user->username ?></a> </td>
+                <td> <?= $user->fullName() ?> </td>
             </tr>
-        <?php endforeach; ?>
+        <?php } ?>
     </table>
 <?php } ?>

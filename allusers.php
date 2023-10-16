@@ -1,6 +1,10 @@
 <?php
 include "./functions.php";
 
-$userArrayList = loadUsers();
+displayUsers();
 
-displayUsers($userArrayList);
+echo "<br>";
+echo "<br>";
+echo "<br>";
+
+displayUsersWithLink();
