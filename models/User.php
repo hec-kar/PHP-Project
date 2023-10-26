@@ -1,90 +1,106 @@
 <?php
-
-/**
- * 
- */
 class User
 {
-  public $userId;
+  public $user_id;
   public $username;
-  public $firstName;
-  public $lastName;
-  public $passwordInput;
-  public $passwordCheck;
-  public $primaryEmail;
+  public $firstname;
+  public $lastname;
+  public $password_input;
+  public $password_check;
+  public $primary_email;
 
   // public function __construct()
   // {
   // }
-  function __construct($userId, $username, $firstName, $lastName, $passwordInput, $passwordCheck, $primaryEmail)
+
+  public function __construct($user_id, $username, $firstname, $lastname, $password_input, $password_check, $primary_email)
   {
-    $this->userId = $userId;
+    $this->user_id = $user_id;
     $this->username = $username;
-    $this->firstName = $firstName;
-    $this->lastName = $lastName;
-    $this->passwordInput = $passwordInput;
-    $this->passwordCheck = $passwordCheck;
-    $this->primaryEmail = $primaryEmail;
+    $this->firstname = $firstname;
+    $this->lastname = $lastname;
+    $this->password_input = $password_input;
+    $this->password_check = $password_check;
+    $this->primary_email = $primary_email;
   }
-  function set_userId($userId)
+
+  public function getUser_id()
   {
-    $this->userId = $userId;
+    return $this->user_id;
   }
-  function get_userId()
+
+  public function setUser_id($user_id)
   {
-    return $this->userId;
+    $this->user_id = $user_id;
   }
-  function set_username($username)
-  {
-    $this->username = $username;
-  }
-  function get_username()
+
+  public function getUsername()
   {
     return $this->username;
   }
-  function set_firstName($firstName)
+
+  public function setUsername($username)
   {
-    $this->firstName = $firstName;
-  }
-  function get_firstName()
-  {
-    return $this->firstName;
-  }
-  function set_lastName($lastName)
-  {
-    $this->lastName = $lastName;
-  }
-  function get_lastName()
-  {
-    return $this->lastName;
-  }
-  function set_passwordInput($passwordInput)
-  {
-    $this->passwordInput = $passwordInput;
-  }
-  function get_passwordInput()
-  {
-    return $this->passwordInput;
-  }
-  function set_passwordCheck($passwordCheck)
-  {
-    $this->passwordCheck = $passwordCheck;
-  }
-  function get_passwordCheck()
-  {
-    return $this->passwordCheck;
-  }
-  function set_primaryEmail($primaryEmail)
-  {
-    $this->primaryEmail = $primaryEmail;
-  }
-  function get_primaryEmail()
-  {
-    return $this->primaryEmail;
+    $this->username = $username;
   }
 
-  function fullName(): string
+  public function getFirstname()
   {
-    return $this->firstName . " " . $this->lastName;
+    return $this->firstname;
+  }
+
+
+  public function setFirstname($firstname)
+  {
+    $this->firstname = $firstname;
+  }
+
+  public function getLastname()
+  {
+    return $this->lastname;
+  }
+
+
+  public function setLastname($lastname)
+  {
+    $this->lastname = $lastname;
+  }
+
+
+  public function getPassword_input()
+  {
+    return $this->password_input;
+  }
+
+  public function setPassword_input($password_input)
+  {
+    $this->password_input = $password_input;
+  }
+
+  public function getPassword_check(
+  )
+  {
+    return $this->password_check;
+  }
+
+
+  public function setPassword_check($password_check)
+  {
+    $this->password_check = $password_check;
+  }
+
+  public function getPrimary_email()
+  {
+    return $this->primary_email;
+  }
+
+  public function setPrimary_email($primary_email)
+  {
+    $this->primary_email = $primary_email;
+  }
+
+  public function fullName()
+  {
+    return $this->firstname . ' ' . $this->lastname;
   }
 }
