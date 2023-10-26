@@ -15,3 +15,5 @@
 
 <?php // "closing" HTML for the template ?>
 <?php template_footer();?>
+
+<?php include_once "includes/closing.php"; ?>
