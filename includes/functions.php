@@ -1,30 +1,35 @@
 <?php
 $GLOBALS['BASE'] = dirname(__DIR__);
 include $BASE . "/models/User.php";
-function loadUsers()
+function loadUsers($conn)
 {
-  $ds_user = array();
-  $users_file = fopen("../files/users.csv", "r");
-  while (!feof($users_file)) {
-    $line = fgets($users_file);
-    $user_arr = explode(',', $line);
-    $user_id = $user_arr[0];
-    $username = $user_arr[1];
-    $firstname = $user_arr[2];
-    $lastname = $user_arr[3];
-    $password_input = $user_arr[4];
-    $password_check = $user_arr[5];
-    $primary_email =  $user_arr[6];
-    $user = new User($user_id, $username, $firstname, $lastname, $password_input, $password_check, $primary_email);
-    array_push($ds_user, $user);
+  $sql = "SELECT * FROM users";
+  $listUser = array();
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $user_id = $row["id"];
+      $username = $row["username"];
+      $firstname = $row["firstname"];
+      $lastname = $row["lastname"];
+      $password_input = $row["password_input"];
+      $password_check = $row["password_check"];
+      $primary_email =  $row["email"];
+
+      $newUser = new User($user_id, $username, $firstname, $lastname, $password_input, $password_check, $primary_email);
+
+      array_push($listUser, $newUser);
+    }
+  } else {
+    echo "0 results";
+    return null;
   }
-  fclose($users_file);
-  return $ds_user;
+  return $listUser;
 }
 
-function displayUsers()
+function displayUsers($conn)
 {
-  $ds_user = loadUsers();
+  $ds_user = loadUsers($conn);
   echo '<h1>displayUsers<h1/>';
   echo ' <table class="table-primary table-bordered">
     <thead>
@@ -46,9 +51,9 @@ function displayUsers()
 }
 
 
-function displayUsersWithLink()
+function displayUsersWithLink($conn)
 {
-  $ds_user = loadUsers();
+  $ds_user = loadUsers($conn);
   echo '<h1>displayUsersWithLink<h1/>';
   echo '<table class="table-primary table-bordered">
     <thead>
@@ -69,9 +74,9 @@ function displayUsersWithLink()
   </table>';
 }
 
-function displayUsersWithLinkToForm()
+function displayUsersWithLinkToForm($conn)
 {
-  $ds_user = loadUsers();
+  $ds_user = loadUsers($conn);
   echo '<h1>displayUsersWithLinkToForm<h1/>';
   echo '<table class="table-primary table-bordered">
     <thead>

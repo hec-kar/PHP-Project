@@ -9,29 +9,18 @@ include_once '../includes/opening.php';
 ?>
 <?php template_header(); ?>
 
-<h1>Users from file</h1>
-<div class="container">
+<h1>display user fromDB</h1>
+<?php
+// displayUsers();
+// displayUsersWithLink();
 
-</div>
-<?php displayUsers();
-displayUsersWithLink();
-displayUsersWithLinkToForm();
+displayUsersWithLinkToForm($conn);
 
 echo '<p>display _user</p>';
 display_users($conn);
 
-
 ?>
 
-<!-- <h1>Users from DB</h1>
-<?php
-// Bang du lieu users
-$sql = "SELECT id, firstname, lastname, email FROM Users";
-$result = mysqli_query($conn, $sql);
-echo "<h1>ToHTML function </h1>";
-
-// arrayToHTMLTable($result);
-?> -->
 
 <?php
 echo '<p>display User with action</p>';
