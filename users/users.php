@@ -9,25 +9,15 @@ include_once '../includes/opening.php';
 ?>
 <?php template_header(); ?>
 
-<h1>display user fromDB</h1>
-<?php
-// displayUsers();
-// displayUsersWithLink();
-
-displayUsersWithLinkToForm($conn);
-
-echo '<p>display _user</p>';
-display_users($conn);
-
-?>
-
 
 <?php
-echo '<p>display User with action</p>';
-
 $query_string = "../controllers/user_controller.php?delete_user_id=";
-$action_text = "Delete";
-display_users_with_action($conn,  $query_string, $action_text);
+$action = "Delete";
+display_users_with_action($conn, $query_string, $action);
+
+$query_string_2 = "update_user.php?update_user_id=";
+$action_2 = "Update";
+display_users_with_action($conn, $query_string_2, $action_2);
 ?>
 
 <?php // "closing" HTML for the template 

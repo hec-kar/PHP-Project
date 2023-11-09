@@ -29,7 +29,7 @@ print $header;
 ?>
 
 <?php
-$ds_user = loadUsers($conn);
+$ds_user = loadUsers();
 foreach ($ds_user as $user) {
 	if ($user->user_id == $id) : ?>
 
@@ -58,9 +58,6 @@ foreach ($ds_user as $user) {
 					<input type="hidden" name="user_id" value="<?php print $user->user_id; ?>" />
 					<input type="submit" name="btnUpdateUser" value="<?php print $header; ?>" class="btn btn-primary" />
 				</div>
-
-
-
 			</form>
 
 		</div>
