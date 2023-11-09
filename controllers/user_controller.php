@@ -52,7 +52,8 @@ if (array_key_exists('update_user_id', $_GET)) {
   $user_name = $_POST["username"];
   $query = "SELECT username FROM users WHERE username = $user_name";
   $result = mysqli_query($conn, $query);
-  if ($result->current_field == 0) {
+  // print_r($result->field_count);
+  if ($result->field_count == 1) {
     print("Da co tai khoan nay");
     header("Location: ../users/update_user.php?err=create-user-err");
     exit();
